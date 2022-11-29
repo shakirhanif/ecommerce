@@ -1,7 +1,7 @@
 const data = {
   products: [
     {
-      name: "Bata Shoes",
+      name: "Service Shoes",
       slug: "service-shoe",
       category: "shoes",
       image: "/images/shoe1.jpg",
@@ -9,7 +9,7 @@ const data = {
       brand: "Bata",
       rating: 4,
       numReviews: 8,
-      countInStock: 20,
+      countInStock: 0,
       description: "its a great white shoe",
     },
     {
@@ -33,7 +33,7 @@ const data = {
       brand: "Mili",
       rating: 4,
       numReviews: 7,
-      countInStock: 10,
+      countInStock: 0,
       description: "good durable fashion shoes from mili",
     },
     {
