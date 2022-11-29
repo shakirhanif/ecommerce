@@ -1,13 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
 import { Layout } from "../../components/Layout";
 import data from "../../utils/data";
+import { Store } from "../../utils/Store";
 
 export const ProductDetail = () => {
   const slug = useRouter().query.slug;
   const product = data.products.find((x) => slug === x.slug);
+  const { state, dispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    if (product.countInStock < quantity) {
+      alert("Sorry, Product Out of Stock");
+      return;
+    }
+    return dispatch({
+      type: "add_cart_item",
+      payload: { ...product, quantity: quantity },
+    });
+  };
   if (!product) {
     return <div>Product not Found</div>;
   }
@@ -38,7 +52,6 @@ export const ProductDetail = () => {
           </ul>
         </div>
         <div className=" card p-5">
-          next div
           <div className=" mb-2 flex justify-between">
             <div>Price: </div>
             <div>${product.price}</div>
@@ -49,7 +62,12 @@ export const ProductDetail = () => {
               {product.countInStock > 0 ? "In stock" : "Out of Stock "}{" "}
             </div>
           </div>
-          <button className=" primary-button w-full ">Add to Cart</button>
+          <button
+            className=" primary-button w-full "
+            onClick={addToCartHandler}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </Layout>
