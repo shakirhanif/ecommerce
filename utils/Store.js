@@ -1,11 +1,14 @@
 import { createContext, useReducer } from "react";
+import Cokies from "js-cookie";
 
 export const Store = createContext();
 
 const initialState = {
-  cart: {
-    cartItems: [],
-  },
+  cart: Cokies.get("cart")
+    ? JSON.parse(Cokies.get("cart"))
+    : {
+        cartItems: [],
+      },
 };
 
 function reducer(state, action) {
@@ -20,11 +23,19 @@ function reducer(state, action) {
             item.name === newItem.name ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
+      Cokies.set(
+        "cart",
+        JSON.stringify({ ...state.cart, cartItems: cartItems })
+      );
       return { ...state, cart: { ...state.cart, cartItems: cartItems } };
     }
     case "cart_remove_item": {
       const cartItems = state.cart.cartItems.filter(
         (x) => x.slug !== action.payload.slug
+      );
+      Cokies.set(
+        "cart",
+        JSON.stringify({ ...state.cart, cartItems: cartItems })
       );
       return { ...state, cart: { ...state.cart, cartItems: cartItems } };
     }

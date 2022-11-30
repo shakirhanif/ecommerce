@@ -9,7 +9,7 @@ const data = {
       brand: "Bata",
       rating: 4,
       numReviews: 8,
-      countInStock: 0,
+      countInStock: 4,
       description: "its a great white shoe",
     },
     {
@@ -33,7 +33,7 @@ const data = {
       brand: "Mili",
       rating: 4,
       numReviews: 7,
-      countInStock: 0,
+      countInStock: 10,
       description: "good durable fashion shoes from mili",
     },
     {
