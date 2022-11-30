@@ -9,7 +9,7 @@ export const Layout = ({ children, title }) => {
   return (
     <>
       <Head>
-        <title>{title ? title + " OSum" : "OSum"}</title>
+        <title>{title ? title + " --OSum" : "OSum"}</title>
         <meta name="OSum" content="OSum store" />
         <link rel="icon" href="" />
       </Head>

@@ -7,7 +7,8 @@ import data from "../../utils/data";
 import { Store } from "../../utils/Store";
 
 export const ProductDetail = () => {
-  const slug = useRouter().query.slug;
+  const router = useRouter();
+  const slug = router.query.slug;
   const product = data.products.find((x) => slug === x.slug);
   const { state, dispatch } = useContext(Store);
   const addToCartHandler = () => {
@@ -17,10 +18,11 @@ export const ProductDetail = () => {
       alert("Sorry, Product Out of Stock");
       return;
     }
-    return dispatch({
+    dispatch({
       type: "add_cart_item",
       payload: { ...product, quantity: quantity },
     });
+    router.push("/cart");
   };
   if (!product) {
     return <div>Product not Found</div>;
