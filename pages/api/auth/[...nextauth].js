@@ -1,4 +1,4 @@
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import User from "../../../models/User";
 import CredentialsProvider from "next-auth/providers/credentials";
 import db from "../../../utils/db";
@@ -15,8 +15,8 @@ export default NextAuth({
       }
       if (user?.isAdmin) {
         token.isAdmin = user.isAdmin;
-        return token;
       }
+      return token;
     },
     async session({ session, token }) {
       if (token?._id) {
@@ -24,8 +24,8 @@ export default NextAuth({
       }
       if (token?.isAdmin) {
         session.user.isAdmin = token.isAdmin;
-        return session;
       }
+      return session;
     },
   },
   providers: [

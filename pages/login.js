@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { Layout } from "../components/Layout";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 const loginScreen = () => {
   const { data: session } = useSession();
-  router = useRouter();
+  const router = useRouter();
   const { redirect } = router.query;
   useEffect(() => {
     if (session?.user) {
@@ -28,8 +28,8 @@ const loginScreen = () => {
     try {
       const result = await signIn("credentials", {
         redirect: false,
-        email: email,
-        password: password,
+        email,
+        password,
       });
       if (result.error) {
         toast.error(result.error);
