@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { ToastContainer } from "react-toastify";
 import { Store } from "../utils/Store";
 
 export const Layout = ({ children, title }) => {
@@ -18,6 +19,7 @@ export const Layout = ({ children, title }) => {
         <meta name="OSum" content="OSum store" />
         <link rel="icon" href="" />
       </Head>
+      <ToastContainer position="bottom-center" limit={1}></ToastContainer>
       <div className=" flex min-h-screen flex-col justify-between">
         <header>
           <nav className=" flex h-12 justify-between items-center px-4 shadow-md">
