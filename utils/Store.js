@@ -8,6 +8,7 @@ const initialState = {
     ? JSON.parse(Cokies.get("cart"))
     : {
         cartItems: [],
+        shippingAddress: {},
       },
 };
 
@@ -49,6 +50,17 @@ function reducer(state, action) {
         },
       };
     }
+    case "save_shipping_address":
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: {
+            ...state.cart.shippingAddress,
+            ...action.payload,
+          },
+        },
+      };
 
     default:
       return state;
