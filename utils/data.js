@@ -66,7 +66,7 @@ const data = {
       brand: "Nike",
       rating: 4.6,
       numReviews: 10,
-      countInStock: 8,
+      countInStock: 2,
       description: "good durable fashion sneakers from nike",
     },
     {
