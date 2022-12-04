@@ -59,7 +59,7 @@ const PlaceOrderScreen = () => {
     <Layout title="Place Order">
       <CheckoutWizard activeStep={3}></CheckoutWizard>
       <h1 className=" mb-4 text-xl">Place Order</h1>
-      {cartItems.lenght === 0 ? (
+      {cartItems.length === 0 ? (
         <div>
           Cart is empty <Link href="/">Go shopping</Link>
         </div>

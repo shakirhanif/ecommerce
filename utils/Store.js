@@ -51,6 +51,14 @@ function reducer(state, action) {
         },
       };
     }
+    case "cart_clear_items":
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: [],
+        },
+      };
     case "save_shipping_address":
       return {
         ...state,
