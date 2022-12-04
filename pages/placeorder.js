@@ -17,7 +17,9 @@ const PlaceOrderScreen = () => {
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod } = cart;
   const round2 = (x) => Math.round(x * 100 + Number.EPSILON) / 100;
-  const itemsPrice = round2(cartItems.reduce((a, c) => a + c.price, 0));
+  const itemsPrice = round2(
+    cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
+  );
   const shippingPrice = itemsPrice > 200 ? 0 : 15;
   const taxPrice = round2(itemsPrice * 0.15);
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);

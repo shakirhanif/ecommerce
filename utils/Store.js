@@ -75,7 +75,7 @@ function reducer(state, action) {
         ...state,
         cart: {
           ...state.cart,
-          paymentMethod: action.paymentMethod,
+          paymentMethod: action.payload,
         },
       };
 
