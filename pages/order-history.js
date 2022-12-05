@@ -39,7 +39,7 @@ const OrderHistory = () => {
   }, []);
   return (
     <Layout title="Order History">
-      <h1>Order History</h1>
+      <h1 className=" text-xl mb-4">Order History</h1>
       {loading ? (
         <div>...loading</div>
       ) : error ? (
@@ -63,9 +63,9 @@ const OrderHistory = () => {
                   <td className=" p-5">{x._id.substring(20, 24)}</td>
                   <td className=" p-5">{x.createdAt.substring(0, 10)}</td>
                   <td className=" p-5">{x.totalPrice}</td>
-                  <td className=" p-5">{isPaid ? "paid" : "not paid"}</td>
+                  <td className=" p-5">{x.isPaid ? "paid" : "not paid"}</td>
                   <td className=" p-5">
-                    {isDelivered ? "Delivered" : "not delivered"}
+                    {x.isDelivered ? "Delivered" : "not delivered"}
                   </td>
                   <td className=" p-5">
                     <Link href={`/order/${x._id}`}>Details</Link>
